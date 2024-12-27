@@ -19,7 +19,7 @@ public class Dice {
 
         while(diceUsed<diceCount){
 
-            totalSum += ThreadLocalRandom.current().nextInt(min,max+1);
+            totalSum += (int)(Math.random()*(max-min+1))+1;
             diceUsed++;
         }
 

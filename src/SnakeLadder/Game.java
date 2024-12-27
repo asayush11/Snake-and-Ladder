@@ -17,7 +17,7 @@ public class Game {
 
     private void initializeGame() {
 
-        board = new Board(10, 5,4);
+        board = new Board(100, 5,4);
         dice = new Dice(1);
         winner = null;
         addPlayers();
@@ -43,13 +43,16 @@ public class Game {
 
             //get the new position
             int playerNewPosition = playerTurn.currentPosition + diceNumbers;
-            playerNewPosition = jumpCheck(playerNewPosition);
+            while(true){
+                int playerPositionAfterJump = jumpCheck(playerNewPosition);
+                if(playerPositionAfterJump==playerNewPosition) break;
+                playerNewPosition = playerPositionAfterJump;
+            }
             playerTurn.currentPosition = playerNewPosition;
 
             System.out.println("player turn is:" + playerTurn.id + " new Position is: " + playerNewPosition);
             //check for winning condition
-            if(playerNewPosition >= board.cells.length * board.cells.length-1){
-
+            if(playerNewPosition >= board.cells.length -1){
                 winner = playerTurn;
             }
 
@@ -68,7 +71,7 @@ public class Game {
 
     private int jumpCheck (int playerNewPosition) {
 
-        if(playerNewPosition > board.cells.length * board.cells.length-1 ){
+        if(playerNewPosition > board.cells.length-1 ){
             return playerNewPosition;
         }
 
