@@ -5,22 +5,17 @@ import java.util.LinkedList;
 
 public class Game {
 
-    Board board;
-    Dice dice;
-    Deque<Player> playersList = new LinkedList<>();
-    Player winner;
+    private final Board board;
+    private final Dice dice;
+    private final Deque<Player> playersList = new LinkedList<>();
+    private Player winner;
 
     public Game(){
-
-        initializeGame();
-    }
-
-    private void initializeGame() {
-        board = new Board(100, 5,4);
-        dice = new Dice(1, 1, 6);
-        winner = null;
+        this.board = new Board(100, 5, 4);
+        this.dice = new Dice(1, 1, 6);
         addPlayers();
     }
+
 
     private void addPlayers() {
         Player player1 = new Player("p1", 0);
