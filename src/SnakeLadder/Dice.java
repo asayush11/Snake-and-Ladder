@@ -1,15 +1,15 @@
 package src.SnakeLadder;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Dice {
 
-    int diceCount;
-    int min = 1;
-    int max =6;
+    private final int diceCount;
+    private final int min;
+    private final int max;
 
-    public Dice(int diceCount){
+    public Dice(int diceCount, int min, int max) {
         this.diceCount = diceCount;
+        this.min = min;
+        this.max = max;
     }
 
     public int rollDice(){
